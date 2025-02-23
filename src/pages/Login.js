@@ -17,7 +17,7 @@ const Login = () => {
       const response = await axios.post('http://127.0.0.1:8000/api/token/', formData);
       localStorage.setItem('token', response.data.access);
       localStorage.setItem('refresh_token', response.data.refresh);
-      navigate('/home');
+      window.location.replace('/home');
       alert('Login successful!');
     } catch (error) {
       alert('Invalid credentials. Please try again.');
