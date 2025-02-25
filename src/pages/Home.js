@@ -23,10 +23,17 @@ const Home = ({ token }) => {
   }, [fetchData]); // Dependencies for useEffect
 
   return (
-    <div className="home">
-      <Dashboard token={token} />
-      <StockForm token={token} onStockAdded={fetchData} />
-      <StockTable stocks={stocks} token={token} onStockDeleted={fetchData} />
+    <div className="home-container" style={{ padding: '20px', backgroundColor: '#f4f4f4', minHeight: '100vh' }}>
+      <div className="dashboard-section" style={{ marginBottom: '20px', padding: '20px', background: 'white', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+        <Dashboard token={token} useMockOnFailure={true} />
+      </div>
+      <div className="stock-form-section" style={{ marginBottom: '20px', padding: '20px', background: 'white', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)' }}>
+        <h3 style={{ marginBottom: '15px', textAlign: 'center', color: '#333' }}>Add a New Stock</h3>
+        <StockForm token={token} onStockAdded={fetchData} />
+      </div>
+      <div className="stock-table-section" style={{ padding: '20px', background: 'white', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+        <StockTable stocks={stocks} token={token} onStockDeleted={fetchData} />
+      </div>
     </div>
   );
 };

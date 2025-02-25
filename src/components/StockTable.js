@@ -1,4 +1,3 @@
-// src\components\StockTable.js
 import React from 'react';
 import { deleteStock } from '../api';
 
@@ -17,10 +16,10 @@ const tickerToNameMap = {
 };
 
 const StockTable = ({ stocks, token, onStockDeleted }) => {
-  const handleDelete = async (id) => {
+  const handleDelete = async (ticker) => {
     try {
-      await deleteStock(id, token); // Call delete API
-      onStockDeleted(id); // Update stock list in the parent component
+      await deleteStock(ticker, token); // Call delete API
+      onStockDeleted(ticker); // Update stock list in the parent component
     } catch (error) {
       console.error("Failed to delete stock:", error);
     }
@@ -41,28 +40,17 @@ const StockTable = ({ stocks, token, onStockDeleted }) => {
       </thead>
       <tbody>
         {stocks.map((stock) => (
-          <tr key={stock.id}>
-            {/* Map ticker to a name or show "N/A" if unavailable */}
+          <tr key={stock.ticker}>
             <td>{tickerToNameMap[stock.ticker] || "N/A"}</td>
             <td>{stock.ticker || "Unknown"}</td>
-            <td>
-              $
-              {typeof parseFloat(stock.current_price) === "number"
-                ? parseFloat(stock.current_price).toFixed(2)
-                : "N/A"}
-            </td>
-            <td>
-              $
-              {typeof parseFloat(stock.previous_close) === "number"
-                ? parseFloat(stock.previous_close).toFixed(2)
-                : "N/A"}
-            </td>
+            <td>${typeof stock.current_price === "number" ? stock.current_price.toFixed(2) : "N/A"}</td>
+            <td>${typeof stock.previous_close === "number" ? stock.previous_close.toFixed(2) : "N/A"}</td>
             <td>{stock.change || "N/A"}</td>
             <td>{stock.change_percent || "N/A"}</td>
             <td>
               <button
                 className="btn btn-danger"
-                onClick={() => handleDelete(stock.id)}
+                onClick={() => handleDelete(stock.ticker)}
               >
                 Delete
               </button>

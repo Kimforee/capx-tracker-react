@@ -1,33 +1,3 @@
-// import axios from 'axios';
-
-// const BASE_URL = 'http://127.0.0.1:8000/api';
-
-// // Replace this with a real token after implementing login
-// const MOCK_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MjcxNTEzLCJpYXQiOjE3MzYyNzEyMTMsImp0aSI6ImZkYzk1NGZlNmYyMzQxMWY4YzIzZTEyMjcyNjIzMTM1IiwidXNlcl9pZCI6MX0.ioVkt9DWPi16aD-KUe7pGGslUq2iSL1TBuYK5OIFhkI';
-
-// export const login = (credentials) =>
-//   axios.post(`${BASE_URL}/token/`, credentials);
-
-// export const fetchStocks = () =>
-//   axios.get(`${BASE_URL}/stocks/`, {
-//     headers: { Authorization: `Bearer ${MOCK_TOKEN}` },
-//   });
-
-// export const addStock = (stock) =>
-//   axios.post(`${BASE_URL}/stocks/`, stock, {
-//     headers: { Authorization: `Bearer ${MOCK_TOKEN}` },
-//   });
-
-// export const deleteStock = (id) =>
-//   axios.delete(`${BASE_URL}/stocks/${id}/`, {
-//     headers: { Authorization: `Bearer ${MOCK_TOKEN}` },
-//   });
-
-// export const fetchPortfolioValue = () =>
-//   axios.get(`${BASE_URL}/portfolio/value/`, {
-//     headers: { Authorization: `Bearer ${MOCK_TOKEN}` },
-//   });
-
 import axios from 'axios';
 
 const BASE_URL = 'http://127.0.0.1:8000/api';
@@ -60,7 +30,7 @@ axiosInstance.interceptors.request.use(
 // API calls
 export const login = (credentials) => axiosInstance.post('/token/', credentials);
 
-export const fetchStocks = () => axiosInstance.get('/stocks/');
+  export const fetchStocks = () => axiosInstance.get('/stocks/');
 
 export const addStock = (stock) => axiosInstance.post('/stocks/', stock);
 
